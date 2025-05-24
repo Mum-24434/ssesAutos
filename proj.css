@@ -5,8 +5,8 @@
 body{
     opacity: 0;
     animation: body-animate 1.2s ease forwards;
-    width: 100%;
-    max-width: 1000px;
+    width: fit-content;
+    max-width: fit-content;
     margin: auto;
     overflow-x: hidden;
 
