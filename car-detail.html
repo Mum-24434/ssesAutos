@@ -18,6 +18,7 @@
             background-color: #f9f9f9;
             opacity: 0;
             animation: body-animate 2s ease forwards;
+            
         }
         @keyframes body-animate{
     to{
@@ -26,8 +27,8 @@
 }
     #content{
         margin: auto;
-        padding: 40px 20px;
-        
+        padding: 40px 10px;
+        max-width: 1000px;
     }
     #car-name{
         text-align: center;
@@ -53,8 +54,8 @@
     @media(max-width:900px){
         #car-content{
             flex-wrap: wrap;
-            flex-direction: column;
-            
+            flex-direction: column;  
+            overflow: hidden;
         }
     }
     #spec{
@@ -137,19 +138,20 @@
       return;
     }
 
-    const fullMessage = `Car Order Request:
+    const fullMessage = `Hello, my name is ${name}. I would like to buy ${carName} from you.
 Name: ${name}
 Phone: ${phone}
 Car: ${carName}
 Price: ${carPrice}
 Message: ${message || "No additional message."}`;
 
-    const phoneNumber = "2349152962429";
-    const url = 'https://wa.me/${2349152962429}?text=${encodeURIComponent(fullMessage)}';
+    const whatsappNumber = "2349152962429";
+const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(fullMessage)}`;
 
-    window.open(url, "_blank");
+window.open(url, "_blank");
   }
 </script>
+   
 </head>
 <body>
     <div id="container">
@@ -185,7 +187,7 @@ Message: ${message || "No additional message."}`;
                     background-color: #fff;
                     border: lightgray 2px solid;
                     " id="order-message"></textarea>
-                    <button type="submit" onclick="sendCarOrder()">Order via Whatsapp</button>
+                    <button type="button" onclick="sendCarOrder()">Order via Whatsapp</button>
                 </form>
               </div>
               <div class="Support">
