@@ -180,6 +180,7 @@ section #sidebar{
     flex-wrap: wrap;
     background: linear-gradient(to bottom,#f5f5f5 , #e0e0e0);
     padding: 20px 0  20px 0;
+    
 }
 #cars-container .text-area{
     background-color: #333333;
