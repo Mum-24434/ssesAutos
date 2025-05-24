@@ -7,6 +7,27 @@
     <link rel="stylesheet" type="text/css" href="proj.css?v=2">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+  function sendWhatsApp() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    const fullMessage = `Hello, my name is ${name}.
+Email: ${email}
+Message: ${message}`;
+
+    const phoneNumber = "23452962429"; // replace with your WhatsApp number
+    const url = 'https://wa.me/${23452962429}?text=${encodeURIComponent(fullMessage)}';
+
+    window.open(url, "_blank");
+  }
+</script>
 
 </head>
 <body>
@@ -188,14 +209,13 @@
             <div class="contact-container">
                 <p style="color: #f4f4f4;font-family:sans-serif;">Have a question or want to book a test drive? Reach out! </p>
                 <form id="contact-form" >
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea rows="5" id="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" onclick="sendWhatsApp()">Send Message</button>
                 </form>
             </div>
         </section>
-        
         <footer id="footer-section" data-aos="fade-up" data-aos-duration="1000">
             <hr>
             <div id="footer-container">
@@ -259,6 +279,5 @@
         <script>
             AOS.init();
         </script>
-    
-</body>
+    </body>
 </html>

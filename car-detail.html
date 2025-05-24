@@ -29,7 +29,7 @@
         padding: 40px 20px;
         
     }
-    .car-title{
+    #car-name{
         text-align: center;
         font-size: 2em;
         margin-bottom: 10px;
@@ -124,11 +124,37 @@
         transition: 0.3s ease-in-out;
     }
     </style>
+    <script>
+  function sendCarOrder() {
+    const carName = document.getElementById("car-name").textContent;
+    const carPrice = document.getElementById("car-price").textContent;
+    const name = document.getElementById("buyer-name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("order-message").value.trim();
+
+    if (!name || !phone) {
+      alert("Please fill in your name and phone number.");
+      return;
+    }
+
+    const fullMessage = `Car Order Request:
+Name: ${name}
+Phone: ${phone}
+Car: ${carName}
+Price: ${carPrice}
+Message: ${message || "No additional message."}`;
+
+    const phoneNumber = "2349152962429";
+    const url = 'https://wa.me/${2349152962429}?text=${encodeURIComponent(fullMessage)}';
+
+    window.open(url, "_blank");
+  }
+</script>
 </head>
 <body>
     <div id="container">
         <div id="content">
-            <h1 class="car-title" data-aos="fade-right"> <i class="fas fa-car-side" style="color: #d72638;" ></i>Changan Uni-V (2023 Model) </h1>
+            <h1 id="car-name" data-aos="fade-right"> <i class="fas fa-car-side" style="color: #d72638;" ></i>Changan Uni-V (2023 Model) </h1>
             <div id="car-content">
             <img src="car.png" alt="Changan" data-aos="zoom-in">
             <div id="spec">
@@ -141,7 +167,7 @@
                     <li><i class="fas fa-car-side" style="color: #d72638;"></i> Body Type: Sedan</li>
                   </ul>
               
-                  <p class="car-price" style="color: #d72638; font-weight: bold;
+                  <p id="car-price" style="color: #d72638; font-weight: bold;
                   font-size: 1.2em;" data-aos="fade-up" data-aos-delay="300">Price: ₦12,500,000</p>
                   </div>
                  
@@ -149,9 +175,8 @@
             <div id="order-form">
                 <h1>Order This Car</h1>
                 <form method="" id="form" data-aos="fade-up" data-aos-delay="300">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="tel" placeholder="Phone Number" required>
+                    <input type="text" id="buyer-name" placeholder="Full Name" required>
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
                     <textarea placeholder="Additional Notes (optional)" style="height: 100px;
                     outline: none;
                     padding: 10px;
@@ -159,8 +184,8 @@
                     font-size: 1em;
                     background-color: #fff;
                     border: lightgray 2px solid;
-                    "></textarea>
-                    <button type="submit">Place Order</button>
+                    " id="order-message"></textarea>
+                    <button type="submit" onclick="sendCarOrder()">Order via Whatsapp</button>
                 </form>
               </div>
               <div class="Support">

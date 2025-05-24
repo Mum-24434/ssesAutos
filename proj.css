@@ -297,11 +297,11 @@ hr{
     align-items: center;
     flex-wrap: wrap;
     line-height: 2;
-    color: hsl(0, 0%, 20%);
+    color: #333;
     gap: 0;
     padding: 20px 30px 20px 30px;
-
-    
+    width: 100%;
+    max-width: 1000px;
     
 }
 
