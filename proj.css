@@ -19,9 +19,9 @@ body{
 }
 header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: #c1c1c1;
-    padding: 10px;
+    padding: 10px auto;
    
 }
 nav{
