@@ -5,6 +5,9 @@
 body{
     opacity: 0;
     animation: body-animate 1.2s ease forwards;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
 
 }
 @keyframes body-animate{
@@ -42,6 +45,7 @@ header button{
     background-color: #d72638;
     border: none;
     transition: 0.3s ease-in-out;
+    
     
 }
 header button:hover{
