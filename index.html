@@ -7,29 +7,8 @@
     <link rel="stylesheet" type="text/css" href="proj.css?v=2">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script>
-  function sendWhatsApp() {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if (!name || !email || !message) {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    const fullMessage = `Hello, my name is ${name}.
-Email: ${email}
-Message: ${message}`;
-
-    const phoneNumber = "2349152962429"; 
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
-
-    window.open(url, "_blank");
-  }
-</script>
-
-</head>
+   
+    </head>
 <body>
     <div id="container">
         <header data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">
@@ -208,12 +187,13 @@ Message: ${message}`;
         <section id="contact-section" data-aos="fade-up">
             <div class="contact-container">
                 <p style="color: #f4f4f4;font-family:sans-serif;">Have a question or want to book a test drive? Reach out! </p>
-                <form id="contact-form" >
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Your Email" required>
-                    <textarea rows="5" id="message" placeholder="Your Message" required></textarea>
-                    <button type="submit" onclick="sendWhatsApp()">Send Message</button>
+                <form id="contact-form">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea rows="5" id="message" name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
                 </form>
+                <p id="contact-success" style="display: none;color: #ffffff; background-color:#28a745 ; border-radius:4px;font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Thank you! Your message has been sent.</p>
             </div>
         </section>
         <footer id="footer-section" data-aos="fade-up" data-aos-duration="1000">
@@ -279,5 +259,38 @@ Message: ${message}`;
         <script>
             AOS.init();
         </script>
+        <script>
+  const contactForm = document.getElementById("contact-form");
+  const successMsg = document.getElementById("contact-success");
+
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    fetch("https://formspree.io/f/mrbqwpdr", {
+      method: "POST",
+      headers: {
+        Accept: "application/json"
+      },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        contactForm.reset();
+        successMsg.style.display = "block";
+
+        setTimeout(() => {
+          successMsg.style.display = "none";
+        }, 5000);
+      } else {
+        alert("Error sending message. Try again.");
+      }
+    })
+    .catch(() => {
+      alert("Network error. Please check your connection.");
+    });
+  });
+</script>
     </body>
 </html>

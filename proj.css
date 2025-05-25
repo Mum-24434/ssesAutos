@@ -22,7 +22,10 @@ header{
     justify-content: space-evenly;
     background-color: #c1c1c1;
     padding: 10px auto;
-   
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 nav{
     display: flex;
@@ -241,6 +244,12 @@ background-color: #1c1c1c;
 padding: 70px 0 50px 0;
  
 }
+#contact-success{
+    margin-top: 10px;
+    background-color: #e1fbef;
+    padding: 12px;
+    border-radius: 6px;
+}
 #contact-container p{
     color: #f4f4f4;
 }
@@ -276,6 +285,7 @@ textarea{
 #contact-form button:hover{
     background-color: #a91f2b;
     box-shadow:0 0 15px #a91f2b, 0 0 30px #a91f2b;
+    cursor: pointer;
     transform: scale(1.01);
     transition: 0.3s ease-in-out;
 }
@@ -304,7 +314,7 @@ hr{
     gap: 0;
     padding: 20px 30px 20px 30px;
 }
-@media (min-width:800px){
+@media (max-width:1000px){
     #footer-container{
         flex-direction:column ;
     }
